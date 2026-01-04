@@ -1,0 +1,14 @@
+{
+    "name": "david/tienda-online",
+    "description": "Proyecto DAW Entorno servidor",
+    "type": "project",
+    "authors": [
+        {
+            "name": "David Almela",
+            "email": "davidalmela@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}

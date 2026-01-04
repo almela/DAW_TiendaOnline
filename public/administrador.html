@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <title>TusZapas! | Tienda Online</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+        <!-- Hoja de estilos general -->
+        <link rel="stylesheet" href="assets/css/estilo.css" />
+
+        <style></style>
+    </head>
+
+    <body>
+        <div id="header"></div>
+
+        <section class="hero">
+            <h2>Elige tus Zapas. Deja huella</h2>
+            <p>Descubre lo último en zapatillas.</p>
+        </section>
+
+        <main class="container admin-container">
+            <h2>
+                <i class="fa-solid fa-shield-halved"></i>
+                Panel de administración
+            </h2>
+
+            <div class="admin-layout">
+                <aside class="admin-menu">
+                    <button class="admin-tab active" data-tab="usuarios"><i class="fa-solid fa-users"></i> Usuarios</button>
+
+                    <button class="admin-tab" data-tab="productos"><i class="fa-solid fa-box"></i> Productos</button>
+                </aside>
+
+                <section class="admin-content">
+                    <!-- USUARIOS -->
+                    <div class="admin-section active" id="usuarios">
+                        <div class="admin-header">
+                            <h3>Gestión de usuarios</h3>
+                            <button class="btn" id="btnNuevoUsuario"><i class="fa-solid fa-user-plus"></i> Nuevo usuario</button>
+                        </div>
+
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Email</th>
+                                    <th>Rol</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usuariosTabla">
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="admin-section" id="productos">
+                        <div class="admin-header">
+                            <h3>Gestión de productos</h3>
+                            <button class="btn" id="btnNuevoProducto"><i class="fa-solid fa-plus"></i> Nuevo producto</button>
+                        </div>
+
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Producto</th>
+                                    <th>Tipo</th>
+                                    <th>Color</th>
+                                    <th>Precio</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productosTabla">
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer>© TusZapas - Trabajo de enfoque DAW - Entorno servidor</footer>
+
+        <div id="paneles"></div>
+
+        <div class="admin-modal-overlay" id="adminModalOverlay">
+            <div class="admin-modal">
+                <header>
+                    <h3 id="adminModalTitle"></h3>
+                    <button class="close" id="btnCerrarModal">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </header>
+
+                <div class="admin-modal-content" id="adminModalContent"></div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script type="module" src="assets/js/funciones.js?v=1.0"></script>
+        <script type="module" src="assets/js/app.js?v=1.0"></script>
+        <script type="module" src="assets/js/admin.js?v=1.0"></script>
+    </body>
+</html>

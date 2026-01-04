@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>TusZapas! | Tienda Online</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- Hoja de estilos general -->
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+
+    <style></style>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <section class="hero">
+        <h2>Elige tus Zapas. Deja huella</h2>
+        <p>Descubre lo último en zapatillas.</p>
+    </section>
+
+    <main class="container admin-container">
+        <h2>
+            <i class="fa-solid fa-shield-halved"></i> Panel personal
+        </h2>
+
+        <div class="admin-layout">
+            <aside class="admin-menu">
+                <button class="admin-tab active" data-tab="datos"><i class="fa-solid fa-edit"></i> Mis datos</button>
+                <button class="admin-tab " data-tab="passwd"><i class="fa-solid fa-key"></i> Cambiar contraseña</button>
+                <button class="admin-tab" data-tab="pedidos"><i class="fa-solid fa-box"></i> Mis pedidos</button>
+            </aside>
+
+            <section class="admin-content">
+                <div class="admin-section active" id="datos">
+                    <div class="admin-header">
+                        <h3>Datos personales</h3>
+                    </div>
+
+                    <form id="perfilForm" class="profile-form">
+
+                        <div class="field">
+                            <label>Nombre completo</label>
+                            <div class="input">
+                                <i class="fa-solid fa-user"></i>
+                                <input type="text" name="nombre" placeholder="Nombre y apellidos" required>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label>Email</label>
+                            <div class="input">
+                                <i class="fa-solid fa-envelope"></i>
+                                <input type="email" name="email" placeholder="correo@email.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="field">
+                                <label>Teléfono</label>
+                                <div class="input">
+                                    <i class="fa-solid fa-phone"></i>
+                                    <input type="tel" name="telefono" placeholder="600 000 000">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label>Código postal</label>
+                                <div class="input">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <input type="text" name="cp" placeholder="28001">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label>Dirección</label>
+                            <div class="input">
+                                <i class="fa-solid fa-house"></i>
+                                <input type="text" name="direccion" placeholder="Calle, número, piso">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="field">
+                                <label>Población</label>
+                                <div class="input">
+                                    <i class="fa-solid fa-city"></i>
+                                    <input type="text" name="poblacion" placeholder="Ciudad">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label>Provincia</label>
+                                <div class="input">
+                                    <i class="fa-solid fa-map"></i>
+                                    <input type="text" name="provincia" placeholder="Provincia">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn" type="submit" style="width:100%;">
+                            <i class="fa-solid fa-floppy-disk"></i> Guardar cambios
+                        </button>
+
+                    </form>
+                </div>
+
+                <div class="admin-section" id="passwd">
+                    <div class="admin-header">
+                        <h3>Cambiar la contraseña</h3>
+                    </div>
+
+                    <form id="passwordForm" class="profile-form">
+
+                        <div class="field">
+                            <label>Contraseña actual</label>
+                            <div class="input">
+                                <i class="fa-solid fa-lock"></i>
+                                <input type="password" name="password_actual" placeholder="••••••••" required>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label>Nueva contraseña</label>
+                            <div class="input">
+                                <i class="fa-solid fa-key"></i>
+                                <input type="password" name="password_nueva" placeholder="Mínimo 8 caracteres" required>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label>Repetir nueva contraseña</label>
+                            <div class="input">
+                                <i class="fa-solid fa-key"></i>
+                                <input type="password" name="password_repetir" placeholder="Repite la contraseña" required>
+                            </div>
+                        </div>
+
+                        <button class="btn" type="submit" style="width:100%;">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            Cambiar contraseña
+                        </button>
+
+                    </form>
+                </div>
+
+                <div class="admin-section" id="pedidos">
+                    <div class="admin-header">
+                        <h3>Histórico de pedidos</h3>
+                    </div>
+
+                    <div class="filters">
+                        <div class="pill">
+                            <i class="fa-solid fa-calendar-day"></i>
+                            <input type="date" id="fechaDesde">
+                        </div>
+
+                        <div class="pill">
+                            <i class="fa-solid fa-calendar-day"></i>
+                            <input type="date" id="fechaHasta">
+                        </div>
+
+                        <button class="btn secondary" id="buscarPedidos">
+                            <i class="fa-solid fa-magnifying-glass"></i> Buscar
+                        </button>
+                    </div>
+
+                    <!-- Tabla -->
+                    <div class="table-wrapper">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th># Pedido</th>
+                                    <th>Fecha</th>
+                                    <th>Productos</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaPedidos"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>© TusZapas - Trabajo de enfoque DAW - Entorno servidor</footer>
+
+    <div id="paneles"></div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="assets/js/funciones.js?v=1.0"></script>
+    <script type="module" src="assets/js/app.js?v=1.0"></script>
+    <script type="module" src="assets/js/perfil.js?v=1.0"></script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>TusZapas! | Tienda Online</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- Hoja de estilos general -->
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+
+    <style></style>
+</head>
+
+<body>
+    <div id="header"></div>
+
+
+    <section class="hero">
+        <h2>Elige tus Zapas. Deja huella</h2>
+        <p>Descubre lo último en zapatillas.</p>
+    </section>
+
+    <!-- NOVEDADES -->
+    <section class="container" id="novedades">
+        <div class="section-title">
+            <h3>Novedades</h3>
+            <div class="hint">Selección destacada de esta semana</div>
+        </div>
+
+        <div class="grid" id="novedadesGrid">
+        </div>
+    </section>
+
+    <!-- PRODUCTOS -->
+    <section class="container" id="productos">
+        <div class="section-title">
+            <h3>Productos</h3>
+            <div class="hint" id="resultsHint"></div>
+        </div>
+
+        <!-- Filtros -->
+        <div class="filters">
+            <div class="pill">
+                <i class="fa-solid fa-tags"></i>
+                <select id="filtroMarca" aria-label="Filtrar por marca">
+                    <option value="">Marca (todas)</option>
+                    
+                </select>
+            </div>
+
+            <div class="pill">
+                <i class="fa-solid fa-ruler-horizontal"></i>
+                <select id="filtroTalla" aria-label="Filtrar por talla">
+                    <option value="">Talla (todas)</option>
+                 
+                </select>
+            </div>
+
+            <div class="pill">
+                <i class="fa-solid fa-palette"></i>
+                <select id="filtroColor" aria-label="Filtrar por color">
+                    <option value="">Color (todos)</option>
+                 
+                </select>
+            </div>
+
+            <button type="button" id="limpiarFiltros"><i class="fa-solid fa-rotate-left"></i> Limpiar</button>
+        </div>
+
+        <div class="grid" id="productosGrid"></div>
+    </section>
+
+    <footer>© TusZapas - Trabajo de enfoque DAW - Entorno servidor</footer>
+
+    <div id="paneles">
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="assets/js/funciones.js?v=1.0"></script>
+    <script type="module" src="assets/js/app.js?v=1.0"></script>
+    <script type="module" src="assets/js/tienda.js?v=1.0"></script>
+</body>
+
+</html>
