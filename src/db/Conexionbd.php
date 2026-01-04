@@ -18,8 +18,4 @@ class ConexionBD {
 		}
 	}
 
-	public function pdo() {
-		return $this->pdo;
-	}
-
 }
