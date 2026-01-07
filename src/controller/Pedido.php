@@ -2,6 +2,11 @@
 
 class Pedido
 {
+    # Manejamos el carrito con sessiones
+    # si es el primer artículo y/o la variable carrito no estuviera creada se crea primero
+    # se añade primero como 0 unidades, y luego comprobamos si existe y se le suma
+    # la cantidad, esto hace por ejemplo que si ya teníamos una nos la sume, y no la vuelva 
+    # a añadir. Para ello definimos para cada artículo una key compuesta por el id del producto y la talla
     public function agregarCarrito($arrayRequest)
     {
         $pro_id = $arrayRequest["pro_id"];
@@ -28,6 +33,7 @@ class Pedido
 
         $_SESSION['carrito'][$key]['cantidad'] += $cantidad;
 
+        // Con array_sum sumamos el número de artículos que hay en el carrito
         $total = array_sum(array_column($_SESSION['carrito'], 'cantidad'));
 
         return [
@@ -37,6 +43,7 @@ class Pedido
         ];
     }
 
+    # Función para eliminar una zapatilla del carrito, eliminamos la entrada con unset
     public function eliminarCarrito($arrayRequest)
     {
         $key = $arrayRequest["key"];
@@ -50,6 +57,7 @@ class Pedido
         ];
     }
 
+    # Función para obtener el carrito para luego pintarlo
     public function getCarrito()
     {
 
@@ -66,6 +74,8 @@ class Pedido
         ];
     }
 
+    # Función para generar un nuevo pedido, primero inserta la cabecera del pedido
+    # y después inserta linea a linea el contenido del pedido
     public function hazPedido()
     {
         $usuId = $_SESSION["usu_id"];
@@ -102,6 +112,8 @@ class Pedido
         }
     }
 
+    # Función que nos muestra un histórico de pedidos dadas dos fechas
+    # desde y hasta
     public function consultar($arrayRequest)
     {
         $desde = $arrayRequest["desde"]. " 00:00:00";
@@ -133,6 +145,7 @@ class Pedido
         }
     }
 
+    # Función privada auxiliar para obtener las lineas del pedido
     private function getLineasPedido($pedId, $db)
     {
         $arrLineas = [];

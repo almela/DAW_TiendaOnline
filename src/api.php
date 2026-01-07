@@ -11,14 +11,17 @@ session_start();
 
 class Api
 {
-
+    # Vamos a simular una API a la que le llegan peticiones
     public function procesaRuta()
     {
 
         $ruta = explode("/", $_GET['ruta']);
+        //Aquí podemos saber si le llega un GET, POST, etc
         $method = $_SERVER['REQUEST_METHOD'];
+        // En $arrayRequest tendremos el json que recibimos desde el frotend
         $arrayRequest = json_decode(file_get_contents("php://input"), true);
         $identificado = (isset($_SESSION['usu_id'])) ? true : false;
+        // En el array $ruta, tendremos todos los 'endpoints' que vamos a tratar
         if ($ruta[0] == 'usuario-logado') {
             $identificado = (isset($_SESSION['usu_id'])) ? true : false;
             if ($identificado) {
@@ -220,6 +223,7 @@ class Api
 
     }
 
+    # Con esta función devolvemos desde el backend un json con los datos
     private function respuesta($datos)
     {
         header("Content-Type: application/json");

@@ -3,6 +3,7 @@
 class Usuario
 {
 
+    # Función para obtener todos los usuarios
     public function getUsuarios()
     {
         $db = new ConexionBD();
@@ -26,6 +27,7 @@ class Usuario
         }
     }
 
+    # Función para actualizar un usuario desde el panel de administrador
     public function updateUsuario($arrayRequest)
     {
         $db = new ConexionBD();
@@ -50,6 +52,8 @@ class Usuario
         }
     }
 
+    # Función para actualizar los datos del usuario desde el panel del propio cliente
+    # Aquí como tenemos campos que pueden ser optativos, si no vienen los metemos a null en la BD
     public function actualizarDatosUsuario($arrayRequest)
     {
         $db = new ConexionBD();
@@ -91,6 +95,7 @@ class Usuario
         }
     }
 
+    # Función para cambiar la contraseña, accesible desde el panel de usuario
     public function cambiarPassword($arrayRequest)
     {
         $db = new ConexionBD();
@@ -131,6 +136,7 @@ class Usuario
         }
     }
 
+    # Con esta función nos devuelve todos los datos del usuario logado
     public function getDatosUsuario()
     {
         $db = new ConexionBD();
@@ -154,6 +160,7 @@ class Usuario
         }
     }
 
+    # Función para eliminar un usuario de la base de datos
     public function deleteUsuario($arrayRequest)
     {
         $db = new ConexionBD();

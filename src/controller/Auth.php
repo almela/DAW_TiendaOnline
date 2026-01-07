@@ -3,6 +3,9 @@
 class Auth
 {
 
+    # Función para hacer login
+    # Comprobamos con password_verify que la contraseña que ha introducido 
+    # coincide con el hash de ella que hay en la base de datos
     public function hazLogin($arrayRequest)
     {
         $email = $arrayRequest["email"];
@@ -44,12 +47,15 @@ class Auth
 
     }
 
+    # Función que sirve tanto para que un usuario se registre
+    # Como desde el panel de control para añadir usuarios nuevos
     public function registro($arrayRequest)
     {
         $nombre = $arrayRequest["nombre"];
         $email = $arrayRequest["email"];
         $password = $arrayRequest["password"];
 
+        // No guardamos en la base de datos el password , si no el hash generado del mismo, por seguridad
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
         $db = new ConexionBD();

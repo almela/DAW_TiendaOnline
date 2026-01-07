@@ -3,6 +3,7 @@
 class Producto
 {
 
+    # Función para crear el producto
     public function crearProducto()
     {
         $nombre = $_POST['pro_nombre'];
@@ -14,6 +15,11 @@ class Producto
         $db = new ConexionBD();
 
         try {
+            // Cogemos la imagen que viene del formulario
+            // y le añadimos un identificador único al inicio
+            // porque puede ser que subamos diferentes fotos pero con el mismo nombre
+            // Después movemos la foto a la carpeta upload
+            // Y la insertamos en la base de datos
             $imgName = null;
             if (!empty($_FILES['pro_imagen']['tmp_name'])) {
                 $imgName = uniqid() . "_" . $_FILES['pro_imagen']['name'];
@@ -44,6 +50,7 @@ class Producto
 
     }
 
+    # Función para crear tallas
     public function crearTalla($arrayRequest)
     {
         $talla = $arrayRequest['tall_talla'];
@@ -60,6 +67,7 @@ class Producto
             $stmt->bindParam(':estoc', $estoc);
             $stmt->execute();
 
+            //Obtenemos el tall_id de la talla insertada
             $tallId = $db->pdo->lastInsertId();
 
             return [
@@ -79,6 +87,7 @@ class Producto
         }
     }
 
+    # Función para actualizar tallas
     public function editarTalla($arrayRequest)
     {
         $talla = $arrayRequest['tall_talla'];
@@ -107,6 +116,7 @@ class Producto
         }
     }
 
+    # Función para eliminar una talla
     public function eliminarTalla($arrayRequest)
     {
         $tall_id = $arrayRequest['tall_id'];
@@ -131,6 +141,7 @@ class Producto
         }
     }
 
+    # Función para editar productos
     public function editarProducto()
     {
         $nombre = $_POST['pro_nombre'];
@@ -152,6 +163,7 @@ class Producto
                     "uploads/$imgName"
                 );
             }
+            //si no nos viene imagen, es que no quiere cambiarla, así que mantenemos la imagen que tenía
             $imagen = (is_null($imgName)) ? $imagenAnterior : $imgName;
             $stmt = $db->pdo->prepare(query: Sql::updateProducto());
             $stmt->bindParam(':nombre', $nombre);
@@ -176,6 +188,7 @@ class Producto
 
     }
 
+    # Función que nos lista todos los productos
     public function getProductos()
     {
         $db = new ConexionBD();
@@ -200,6 +213,8 @@ class Producto
         }
     }
 
+    # Función para mostrar en la página principal las novedades
+    # que simplemente son las últimas 4 zapatillas insertadas
     public function getNovedades()
     {
         $db = new ConexionBD();
@@ -224,6 +239,10 @@ class Producto
         }
     }
 
+    # Función para borrar un producto
+    # Si tuvieran tallas asociadas se eliminarían automáticamente
+    # Ojo porque no se podrá borrar un producto que ya haya sido vendido
+    # Esto se controla desde la base de datos
     public function deleteProducto($arrayRequest)
     {
         $db = new ConexionBD();
@@ -246,6 +265,7 @@ class Producto
         }
     }
 
+    # Función para obtener los valores de los selects de la página principal
     public function getContenidoFiltros()
     {
         $db = new ConexionBD();
@@ -260,6 +280,8 @@ class Producto
         ];
     }
 
+    # Funciones privadas que son llamdas sólo desde sus
+    # función principal
     private function getMarcas($db)
     {
         $arrMarcas = [];

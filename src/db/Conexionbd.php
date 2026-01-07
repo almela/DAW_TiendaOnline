@@ -1,10 +1,13 @@
 <?php
+# Clase para la conexión a la  base de datos
 
 class ConexionBD {
 
 	public $pdo;
 
 	public function __construct() {
+		# cargamos las librerías de composer
+		# en este caso para poder usar el .env
 		require '../vendor/autoload.php';
 
         $dotenv = Dotenv\Dotenv::createImmutable('../');
